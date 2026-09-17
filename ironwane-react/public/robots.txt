@@ -1,0 +1,11 @@
+# Until 2026-08-25 this file read "Disallow: /", which was correct while the
+# site lived on a temporary address: an indexed workers.dev URL would have
+# competed with the real domain and outlived it. The domain is real now.
+
+User-agent: *
+Allow: /
+
+# POST-only; a crawler asking for it gets 405 and learns nothing.
+Disallow: /api/
+
+Sitemap: https://ironvane-media.com/sitemap.xml

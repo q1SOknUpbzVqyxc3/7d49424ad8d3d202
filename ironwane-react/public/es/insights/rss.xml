@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recursos — centro de conocimiento de performance marketing</title>
+    <link>https://ironvane-media.com/es/insights/</link>
+    <description>Contenido original sobre estrategia creativa, Meta Ads, ASO, analítica, CRO y expansión de mercados, escrito por el equipo de Ironvane Media.</description>
+    <language>es</language>
+    <atom:link href="https://ironvane-media.com/es/insights/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Por qué las buenas creatividades dejan de funcionar</title>
+      <link>https://ironvane-media.com/es/insights/why-good-creatives-stop-working/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/es/insights/why-good-creatives-stop-working/</guid>
+      <description>La fatiga creativa suele diagnosticarse tarde y tratarse con el remedio equivocado. Esto es lo que realmente se degrada, cómo verlo tres días antes y qué hay que sustituir.</description>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+      <category>Estrategia creativa</category>
+    </item>
+    <item>
+      <title>Cómo encontrar ángulos ganadores antes de invertir</title>
+      <link>https://ironvane-media.com/es/insights/finding-winning-angles/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/es/insights/finding-winning-angles/</guid>
+      <description>La mayoría del testing creativo es adivinar caro. La investigación de ángulos reduce el campo antes de comprometer presupuesto, y lleva días, no trimestres.</description>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 +0000</pubDate>
+      <category>Estrategia creativa</category>
+    </item>
+    <item>
+      <title>Qué analizar además del CTR</title>
+      <link>https://ironvane-media.com/es/insights/what-to-analyse-besides-ctr/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/es/insights/what-to-analyse-besides-ctr/</guid>
+      <description>El CTR es la métrica más citada y menos decisiva del performance marketing. Estas son las cifras que sí cambian decisiones.</description>
+      <pubDate>Tue, 30 Jun 2026 00:00:00 +0000</pubDate>
+      <category>Analítica</category>
+    </item>
+    <item>
+      <title>Subir el presupuesto no es escalar</title>
+      <link>https://ironvane-media.com/es/insights/budget-increase-is-not-scaling/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/es/insights/budget-increase-is-not-scaling/</guid>
+      <description>Aumentar la inversión en una campaña que funciona es la forma más común de romperla. Escalar es un procedimiento con requisitos previos, incrementos y reglas de parada.</description>
+      <pubDate>Tue, 16 Jun 2026 00:00:00 +0000</pubDate>
+      <category>Performance</category>
+    </item>
+    <item>
+      <title>Fundamentos de ASO para apps con tráfico de pago</title>
+      <link>https://ironvane-media.com/es/insights/aso-fundamentals-for-install-driven/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/es/insights/aso-fundamentals-for-install-driven/</guid>
+      <description>La captación de pago pasa por la ficha de la tienda tanto si la optimizas como si no. Arreglar la ficha suele ser la mejora de CPI más barata disponible.</description>
+      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+      <category>ASO</category>
+    </item>
+    <item>
+      <title>Un sistema de testing creativo permanente</title>
+      <link>https://ironvane-media.com/es/insights/building-a-creative-testing-system/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/es/insights/building-a-creative-testing-system/</guid>
+      <description>Los sprints puntuales de testing dan aprendizajes puntuales. Un sistema permanente genera un archivo acumulativo y un sustituto listo antes de necesitarlo.</description>
+      <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+      <category>Testing creativo</category>
+    </item>
+    <item>
+      <title>Entrar en un mercado nuevo sin quemar el presupuesto</title>
+      <link>https://ironvane-media.com/es/insights/entering-a-new-market/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/es/insights/entering-a-new-market/</guid>
+      <description>La mayoría de las entradas fallidas no eran malos mercados. Eran buenos mercados abordados con una campaña traducida, sin economía local y sin criterios de salida.</description>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
+      <category>Expansión</category>
+    </item>
+    <item>
+      <title>Landings que cumplen la promesa del anuncio</title>
+      <link>https://ironvane-media.com/es/insights/landing-pages-that-keep-the-promise/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/es/insights/landing-pages-that-keep-the-promise/</guid>
+      <description>Buena parte de lo que se culpa al coste de medios es en realidad coherencia de mensaje. La solución suele ser una página, no una puja.</description>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+      <category>CRO</category>
+    </item>
+    <item>
+      <title>¿Cuánta creatividad necesita realmente una cuenta?</title>
+      <link>https://ironvane-media.com/es/insights/how-much-creative-does-an-account-need/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/es/insights/how-much-creative-does-an-account-need/</guid>
+      <description>Los objetivos de volumen copiados de casos ajenos no significan nada. La cifra correcta sale de tu propia curva de fatiga y de tu estructura de testing.</description>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Testing creativo</category>
+    </item>
+  </channel>
+</rss>

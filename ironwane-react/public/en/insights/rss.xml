@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Insights — Performance marketing knowledge hub</title>
+    <link>https://ironvane-media.com/en/insights/</link>
+    <description>Original writing on creative strategy, Meta Ads, ASO, analytics, CRO and market expansion from the Ironvane Media team.</description>
+    <language>en</language>
+    <atom:link href="https://ironvane-media.com/en/insights/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Why good creatives stop working</title>
+      <link>https://ironvane-media.com/en/insights/why-good-creatives-stop-working/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/en/insights/why-good-creatives-stop-working/</guid>
+      <description>Creative fatigue is usually diagnosed too late and treated with the wrong medicine. Here is what actually decays, how to see it three days earlier, and what to replace.</description>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+      <category>Creative strategy</category>
+    </item>
+    <item>
+      <title>Finding winning angles before you spend</title>
+      <link>https://ironvane-media.com/en/insights/finding-winning-angles/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/en/insights/finding-winning-angles/</guid>
+      <description>Most creative testing is expensive guessing. Angle research narrows the field before any budget is committed — and it takes days, not quarters.</description>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 +0000</pubDate>
+      <category>Creative strategy</category>
+    </item>
+    <item>
+      <title>What to analyse besides CTR</title>
+      <link>https://ironvane-media.com/en/insights/what-to-analyse-besides-ctr/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/en/insights/what-to-analyse-besides-ctr/</guid>
+      <description>Click-through rate is the most quoted and least decisive metric in performance marketing. Here are the numbers that actually change decisions.</description>
+      <pubDate>Tue, 30 Jun 2026 00:00:00 +0000</pubDate>
+      <category>Analytics</category>
+    </item>
+    <item>
+      <title>A budget increase is not scaling</title>
+      <link>https://ironvane-media.com/en/insights/budget-increase-is-not-scaling/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/en/insights/budget-increase-is-not-scaling/</guid>
+      <description>Raising spend on a working campaign is the most common way to destroy one. Scaling is a procedure with preconditions, step sizes and stop rules.</description>
+      <pubDate>Tue, 16 Jun 2026 00:00:00 +0000</pubDate>
+      <category>Performance</category>
+    </item>
+    <item>
+      <title>ASO fundamentals for install-driven companies</title>
+      <link>https://ironvane-media.com/en/insights/aso-fundamentals-for-install-driven/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/en/insights/aso-fundamentals-for-install-driven/</guid>
+      <description>Paid user acquisition runs through the store listing whether you optimise it or not. Fixing the listing is usually the cheapest CPI improvement available.</description>
+      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+      <category>ASO</category>
+    </item>
+    <item>
+      <title>Building a creative testing system that never stops</title>
+      <link>https://ironvane-media.com/en/insights/building-a-creative-testing-system/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/en/insights/building-a-creative-testing-system/</guid>
+      <description>Occasional testing sprints produce occasional insight. A permanent system produces a compounding archive — and a replacement winner ready before you need it.</description>
+      <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+      <category>Creative testing</category>
+    </item>
+    <item>
+      <title>Entering a new market without burning the budget</title>
+      <link>https://ironvane-media.com/en/insights/entering-a-new-market/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/en/insights/entering-a-new-market/</guid>
+      <description>Most failed market entries were not bad markets. They were good markets entered with a translated campaign, no local economics and no exit criteria.</description>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
+      <category>Market expansion</category>
+    </item>
+    <item>
+      <title>Landing pages that keep the ad's promise</title>
+      <link>https://ironvane-media.com/en/insights/landing-pages-that-keep-the-promise/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/en/insights/landing-pages-that-keep-the-promise/</guid>
+      <description>A large share of what gets blamed on media cost is actually message match. The fix is usually a page, not a bid.</description>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+      <category>CRO</category>
+    </item>
+    <item>
+      <title>How much creative does an account actually need?</title>
+      <link>https://ironvane-media.com/en/insights/how-much-creative-does-an-account-need/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/en/insights/how-much-creative-does-an-account-need/</guid>
+      <description>Volume targets copied from case studies are meaningless. The right number falls out of your own fatigue curve and testing structure.</description>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Creative testing</category>
+    </item>
+  </channel>
+</rss>
