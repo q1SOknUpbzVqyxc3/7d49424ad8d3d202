@@ -31,4 +31,4 @@ for (const [route, filename] of Object.entries(index)) {
 }
 
 assert.deepEqual([...missing], [])
-console.log(`content validation passed: ${Object.keys(index).length} routes`)
+process.stdout.write(`content validation passed: ${Object.keys(index).length} routes\n`)
