@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ironvane Media - Performance systems for Europe and CIS</title>
+<meta name="description" content="Media buying for operators, partner programmes and offer owners. We find the working bundle — offer, geo, creative — and hold its economics at scale, on CPA.">
+<link rel="canonical" href="https://ironvane-media.com/en/">
+<link rel="alternate" hreflang="en" href="https://ironvane-media.com/en/">
+<link rel="alternate" hreflang="ru" href="https://ironvane-media.com/ru/">
+<link rel="alternate" hreflang="uk" href="https://ironvane-media.com/uk/">
+<link rel="alternate" hreflang="es" href="https://ironvane-media.com/es/">
+<link rel="alternate" hreflang="cs" href="https://ironvane-media.com/cs/">
+<link rel="alternate" hreflang="x-default" href="https://ironvane-media.com/en/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ironvane Media">
+<meta property="og:title" content="Ironvane Media — Media buying for iGaming and affiliate">
+<meta property="og:description" content="Media buying for operators, partner programmes and offer owners. We find the working bundle — offer, geo, creative — and hold its economics at scale, on CPA.">
+<meta property="og:url" content="https://ironvane-media.com/en/">
+<meta property="og:image" content="https://ironvane-media.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ironvane Media">
+<meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="uk_UA">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="cs_CZ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ironvane Media — Media buying for iGaming and affiliate">
+<meta name="twitter:description" content="Media buying for operators, partner programmes and offer owners. We find the working bundle — offer, geo, creative — and hold its economics at scale, on CPA.">
+<meta name="twitter:image" content="https://ironvane-media.com/assets/img/og.png">
+<meta http-equiv="refresh" content="0; url=./en/">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<style>html{background:#060607;color:#f2f0ec;font-family:system-ui,-apple-system,sans-serif}body{display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;font-size:14px;letter-spacing:.08em;text-transform:uppercase}a{color:#f2f0ec}</style>
+<script>
+(function () {
+  var supported = ["en","ru","uk","es","cs"];
+  var fallback = "en";
+  var pick = null;
+  try { pick = window.localStorage.getItem("ivm-lang"); } catch (e) {}
+  if (supported.indexOf(pick) === -1) {
+    /* Берём ТОЛЬКО главный язык браузера, а не первый попавшийся из списка.
+
+       Перебор по всему списку выдавал русский людям, которые его туда
+       вообще не ставили первым: у поляка список обычно pl, ru, en — своего
+       языка у нас нет, польский пропускался, и человек получал русскую
+       версию, потому что она оказывалась выше английской. То же у литовца,
+       латыша, эстонца, немца — у всех, кто держит русский вторым. Для сайта,
+       который продаёт в Европу, это худшая из возможных первых секунд.
+
+       Теперь так: язык браузера совпал с одним из наших — отдаём его;
+       не совпал — английский. Русский видит тот, у кого он и стоит главным,
+       то есть русскоязычный, а не сосед по региону. Осознанный выбор
+       переключателем при этом сильнее всего: он прочитан выше, из ivm-lang. */
+    var langs = navigator.languages || [navigator.language || fallback];
+    var primary = String(langs[0] || fallback).slice(0, 2).toLowerCase();
+    if (supported.indexOf(primary) !== -1) pick = primary;
+  }
+  if (supported.indexOf(pick) === -1) pick = fallback;
+  window.location.replace("./" + pick + "/");
+})();
+</script>
+</head>
+<body>
+<noscript><p>Continue to <a href="./en/">Ironvane Media</a></p></noscript>
+</body>
+</html>

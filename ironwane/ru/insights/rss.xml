@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Материалы — база знаний по performance-маркетингу</title>
+    <link>https://ironvane-media.com/ru/insights/</link>
+    <description>Оригинальные материалы о креативной стратегии, Meta Ads, ASO, аналитике, CRO и выходе на новые рынки от команды Ironvane Media.</description>
+    <language>ru</language>
+    <atom:link href="https://ironvane-media.com/ru/insights/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Почему хорошие креативы перестают работать</title>
+      <link>https://ironvane-media.com/ru/insights/why-good-creatives-stop-working/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/ru/insights/why-good-creatives-stop-working/</guid>
+      <description>Выгорание креатива обычно замечают слишком поздно и лечат не тем. Разбираем, что именно деградирует, как увидеть это на три дня раньше и что нужно менять.</description>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+      <category>Креативная стратегия</category>
+    </item>
+    <item>
+      <title>Как находить работающие углы до запуска</title>
+      <link>https://ironvane-media.com/ru/insights/finding-winning-angles/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/ru/insights/finding-winning-angles/</guid>
+      <description>Большинство креативных тестов — это дорогое угадывание. Исследование углов сужает поле до того, как потрачен бюджет, и занимает дни, а не кварталы.</description>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 +0000</pubDate>
+      <category>Креативная стратегия</category>
+    </item>
+    <item>
+      <title>Что анализировать кроме CTR</title>
+      <link>https://ironvane-media.com/ru/insights/what-to-analyse-besides-ctr/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/ru/insights/what-to-analyse-besides-ctr/</guid>
+      <description>CTR — самая цитируемая и наименее решающая метрика в перформансе. Разбираем цифры, которые действительно меняют решения.</description>
+      <pubDate>Tue, 30 Jun 2026 00:00:00 +0000</pubDate>
+      <category>Аналитика</category>
+    </item>
+    <item>
+      <title>Увеличение бюджета — это не масштабирование</title>
+      <link>https://ironvane-media.com/ru/insights/budget-increase-is-not-scaling/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/ru/insights/budget-increase-is-not-scaling/</guid>
+      <description>Поднять расход на работающей кампании — самый распространённый способ её сломать. Масштабирование — это процедура с предусловиями, шагом и правилами остановки.</description>
+      <pubDate>Tue, 16 Jun 2026 00:00:00 +0000</pubDate>
+      <category>Performance</category>
+    </item>
+    <item>
+      <title>Основы ASO для компаний, которые покупают установки</title>
+      <link>https://ironvane-media.com/ru/insights/aso-fundamentals-for-install-driven/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/ru/insights/aso-fundamentals-for-install-driven/</guid>
+      <description>Платное привлечение проходит через карточку в сторе независимо от того, занимаетесь вы ей или нет. Починка карточки — обычно самое дешёвое улучшение CPI из доступных.</description>
+      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+      <category>ASO</category>
+    </item>
+    <item>
+      <title>Постоянная система тестирования креативов</title>
+      <link>https://ironvane-media.com/ru/insights/building-a-creative-testing-system/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/ru/insights/building-a-creative-testing-system/</guid>
+      <description>Разовые тестовые спринты дают разовые инсайты. Постоянная система даёт накопительный архив и готового победителя раньше, чем он понадобится.</description>
+      <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+      <category>Тестирование креативов</category>
+    </item>
+    <item>
+      <title>Как выходить на новый рынок, не сжигая бюджет</title>
+      <link>https://ironvane-media.com/ru/insights/entering-a-new-market/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/ru/insights/entering-a-new-market/</guid>
+      <description>Большинство неудачных выходов — это не плохие рынки. Это хорошие рынки, на которые зашли переведённой кампанией, без локальной экономики и без критериев выхода.</description>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
+      <category>Новые рынки</category>
+    </item>
+    <item>
+      <title>Лендинги, которые держат обещание рекламы</title>
+      <link>https://ironvane-media.com/ru/insights/landing-pages-that-keep-the-promise/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/ru/insights/landing-pages-that-keep-the-promise/</guid>
+      <description>Значительная часть того, что списывают на дорогую медийку, — это несоответствие сообщения. Чинится обычно страницей, а не ставкой.</description>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+      <category>CRO</category>
+    </item>
+    <item>
+      <title>Сколько креатива на самом деле нужно аккаунту</title>
+      <link>https://ironvane-media.com/ru/insights/how-much-creative-does-an-account-need/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/ru/insights/how-much-creative-does-an-account-need/</guid>
+      <description>Цифры объёма, взятые из чужих кейсов, ничего не значат. Правильное число выводится из вашей кривой выгорания и структуры тестирования.</description>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Тестирование креативов</category>
+    </item>
+  </channel>
+</rss>

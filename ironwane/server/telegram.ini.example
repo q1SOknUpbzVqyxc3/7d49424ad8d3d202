@@ -1,0 +1,4 @@
+; Filled in when the bot exists. Outside the served tree on purpose: a file
+; inside it would be published the moment a misconfiguration stopped PHP.
+TELEGRAM_BOT_TOKEN = (заполняется на сервере, в репозиторий не попадает)
+TELEGRAM_CHAT_ID   = (заполняется на сервере, в репозиторий не попадает)

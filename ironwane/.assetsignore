@@ -1,0 +1,46 @@
+# Files in the repository that must not be served to visitors.
+# Same pattern syntax as .gitignore. Lives in the root of the assets
+# directory, which for this site is the repository root.
+#
+# Without this the whole repository is public at its own URL: the launch
+# checklist, the internal specs with the commercial model and tier
+# percentages, and the notes on which partner facts we do not have.
+
+# The repository's own metadata. Cloudflare Pages excluded .git automatically;
+# Workers static assets does not, and the deploy shipped it -- /.git/config was
+# publicly readable and named the private GitHub repository, /.git/index listed
+# every file in the repo including the internal specs this file exists to hide.
+# Verified live before and after.
+.git
+.git/**
+
+# Worker source and its config -- code, not content
+worker.js
+wrangler.jsonc
+.assetsignore
+
+# Configuration files. Their rules still apply; they just should not be
+# readable as files.
+_headers
+_redirects
+
+# The old Pages-format handler, kept out even if it lingers in a branch
+functions
+
+# Internal, never for visitors
+.scratch
+docs
+tools
+
+# Copies of what runs on the VPS -- nginx config and the shape of the secrets
+# file. Not secrets themselves, but nothing a visitor has any business reading,
+# and publishing a server config is handing an attacker the map.
+server
+brand.json
+CLAUDE.md
+.gitignore
+
+# Local agent settings. Gitignored, so a git build never ships it -- but a
+# `wrangler deploy` from a working copy would.
+.claude
+.claude/**

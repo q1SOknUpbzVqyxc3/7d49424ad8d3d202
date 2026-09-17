@@ -1,0 +1,18 @@
+# Cloudflare does not apply this file to anything the Worker returns, and
+# wrangler.jsonc sets run_worker_first to true, so today nothing here is live:
+# harden() in worker.js sets all of it instead. The block is kept, and kept in
+# step, so that narrowing run_worker_first back to ["/api/*"] does not silently
+# strip the site of its security headers. Change one, change the other.
+#
+# The /assets/* rule that used to sit below was deleted rather than copied.
+# Pinning a year of immutable cache by path also pinned the 404 page served for
+# a mistyped asset name, and a visitor had no way to clear it. That cache now
+# depends on the status, which only code can decide.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'

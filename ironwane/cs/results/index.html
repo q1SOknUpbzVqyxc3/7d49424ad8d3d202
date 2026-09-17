@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="cs" dir="ltr" class="no-js">
+<head>
+<script>/* Motion switch. Inline and first in the head on purpose: it must win over
+   the reduced-motion reset before a single frame is painted, and it must not
+   depend on an external file that a cache can hold stale. ?motion=on turns
+   animation on despite the OS and remembers it; ?motion=off clears it. Nothing
+   else sets this, so a visitor who asked for less motion is never overridden. */
+try{var m=location.search,d=document.documentElement;
+if(/[?&]motion=off/.test(m)){localStorage.removeItem("ivm-motion");}
+else if(/[?&]motion=on/.test(m)){localStorage.setItem("ivm-motion","on");}
+if(localStorage.getItem("ivm-motion")==="on"){d.classList.add("force-motion");}}catch(e){}</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Výsledky — struktura případových studií a výkonnostní práce</title>
+<meta name="description" content="Jak popisujeme práci: zadání, strategie, realizace, výsledek, poznatky. Ověřená čísla sdílíme pod NDA.">
+<link rel="canonical" href="https://ironvane-media.com/cs/results/">
+<link rel="alternate" hreflang="en" href="https://ironvane-media.com/en/results/">
+<link rel="alternate" hreflang="ru" href="https://ironvane-media.com/ru/results/">
+<link rel="alternate" hreflang="uk" href="https://ironvane-media.com/uk/results/">
+<link rel="alternate" hreflang="es" href="https://ironvane-media.com/es/results/">
+<link rel="alternate" hreflang="cs" href="https://ironvane-media.com/cs/results/">
+<link rel="alternate" hreflang="x-default" href="https://ironvane-media.com/en/results/">
+<meta name="theme-color" content="#060607">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ironvane Media">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ironvane Media">
+<meta property="og:title" content="Výsledky — struktura případových studií a výkonnostní práce">
+<meta property="og:description" content="Jak popisujeme práci: zadání, strategie, realizace, výsledek, poznatky. Ověřená čísla sdílíme pod NDA.">
+<meta property="og:url" content="https://ironvane-media.com/cs/results/">
+<meta property="og:image" content="https://ironvane-media.com/assets/og/cs-results.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ironvane Media">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="uk_UA">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Výsledky — struktura případových studií a výkonnostní práce">
+<meta name="twitter:description" content="Jak popisujeme práci: zadání, strategie, realizace, výsledek, poznatky. Ověřená čísla sdílíme pod NDA.">
+<meta name="twitter:image" content="https://ironvane-media.com/assets/og/cs-results.png">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/img/favicon.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="alternate" type="application/rss+xml" title="Zdroje — znalostní centrum výkonnostního marketingu" href="../../cs/insights/rss.xml">
+<link rel="stylesheet" href="../../assets/css/main.css?v=74088339">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Úvod","item":"https://ironvane-media.com/cs/"},{"@type":"ListItem","position":2,"name":"Výsledky","item":"https://ironvane-media.com/cs/results/"}]}</script>
+
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<svg class="viz-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<pattern id="vzGrid" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16" fill="none" stroke="rgba(242,240,236,0.07)" stroke-width="1"/></pattern>
+<linearGradient id="mSparkHot" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#7b8cff" stop-opacity="0.45"/><stop offset="1" stop-color="#a3b0ff"/></linearGradient>
+<linearGradient id="mSparkDim" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="rgba(242,240,236,0.06)"/><stop offset="1" stop-color="rgba(242,240,236,0.24)"/></linearGradient>
+<linearGradient id="sparkleGrad" x1="3" y1="0" x2="21" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff"/><stop offset="0.42" stop-color="#cfd4dd"/><stop offset="0.68" stop-color="#7f8490"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+<symbol id="flag-ru" viewBox="0 0 16 12"><rect width="16" height="12" fill="#fff"/><rect y="4" width="16" height="4" fill="#0039a6"/><rect y="8" width="16" height="4" fill="#d52b1e"/></symbol><symbol id="flag-ua" viewBox="0 0 16 12"><rect width="16" height="6" fill="#0057b7"/><rect y="6" width="16" height="6" fill="#ffd700"/></symbol><symbol id="flag-es" viewBox="0 0 16 12"><rect width="16" height="12" fill="#aa151b"/><rect y="3" width="16" height="6" fill="#f1bf00"/></symbol><symbol id="flag-cz" viewBox="0 0 16 12"><rect width="16" height="6" fill="#fff"/><rect y="6" width="16" height="6" fill="#d7141a"/><path d="M0 0 8 6 0 12Z" fill="#11457e"/></symbol><symbol id="flag-gb" viewBox="0 0 16 12"><rect width="16" height="12" fill="#012169"/><path d="M0 0 16 12M16 0 0 12" stroke="#fff" stroke-width="2.4"/><path d="M0 0 16 12M16 0 0 12" stroke="#c8102e" stroke-width="1.4"/><path d="M8 0V12M0 6H16" stroke="#fff" stroke-width="4"/><path d="M8 0V12M0 6H16" stroke="#c8102e" stroke-width="2.4"/></symbol></defs></svg>
+<a class="skip-link" href="#main">Přejít na obsah</a>
+<header class="header">
+<div class="header__inner">
+<a class="logo" href="../../cs/" aria-label="Ironvane Media">
+<svg class="logo__mark" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><defs><linearGradient id="ivmMarka" x1="4" y1="0" x2="20" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff"/><stop offset="0.45" stop-color="#c9ccd2"/><stop offset="0.7" stop-color="#82868f"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs><path d="M12 0c0 6.627 5.373 12 12 12-6.627 0-12 5.373-12 12 0-6.627-5.373-12-12-12C6.627 12 12 6.627 12 0Z" fill="url(#ivmMarka)"/></svg>
+<span class="logo__type"><span class="logo__name">Ironvane Media</span><span class="logo__sub">Performance systems</span></span>
+</a>
+<nav class="nav" data-nav aria-label="Menu">
+<i class="nav__lamp" aria-hidden="true"></i>
+<a class="nav__link" href="../../cs/about/">O nás</a>
+<a class="nav__link" href="../../cs/services/">Služby</a>
+<a class="nav__link" href="../../cs/pass/">Předplatné</a>
+<a class="nav__link is-active" href="../../cs/results/" aria-current="page">Výsledky</a>
+<a class="nav__link" href="../../cs/insights/">Zdroje</a>
+<a class="nav__link" href="../../cs/careers/">Kariéra</a>
+<div class="nav__more" data-nav-more><button class="nav__more-btn nav__link" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="nav-tree"><span>Na Teletype</span><svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.25L4.5 4.75L8 1.25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button><div class="nav__tree" id="nav-tree"><a class="nav__tree-link" href="https://teletype.in/@ironvane/AboutUs" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>O týmu</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="nav__tree-link" href="https://teletype.in/@ironvane/IronvaneFAQ" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>Časté dotazy</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="nav__tree-link" href="https://teletype.in/@ironvane/Session" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>Jak fungují sezení</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="nav__tree-link" href="https://teletype.in/@ironvane/Partnership" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>Partnerství</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="nav__tree-link" href="https://teletype.in/@ironvane/IronvanePass" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>Ironvane Pass</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div></div><a class="nav__link nav__link--out" href="https://t.me/+-lN8N8R_91UzYjc0" target="_blank" rel="noopener noreferrer" data-nav-tg><span>Na Telegramu</span></a></nav>
+<div class="header__actions">
+<div class="lang">
+<button class="lang__toggle" type="button" aria-expanded="false" aria-haspopup="true" aria-label="Vybrat jazyk"><span>CS</span><svg width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.25L4.5 4.75L8 1.25" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
+<div class="lang__menu">
+<a class="lang__item" href="../../en/results/" hreflang="en" lang="en" data-lang="en" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-gb"/></svg><span>English</span><span class="lang__code">EN</span></a>
+<a class="lang__item" href="../../ru/results/" hreflang="ru" lang="ru" data-lang="ru" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg><span>Русский</span><span class="lang__code">RU</span></a>
+<a class="lang__item" href="../../uk/results/" hreflang="uk" lang="uk" data-lang="uk" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-ua"/></svg><span>Українська</span><span class="lang__code">UK</span></a>
+<a class="lang__item" href="../../es/results/" hreflang="es" lang="es" data-lang="es" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg><span>Español</span><span class="lang__code">ES</span></a>
+<a class="lang__item" href="../../cs/results/" hreflang="cs" lang="cs" data-lang="cs" aria-current="true"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-cz"/></svg><span>Čeština</span><span class="lang__code">CS</span></a>
+</div>
+</div>
+<a class="btn btn--primary btn--sm btn--header" href="../../cs/contact/"><span>Kontakt</span><svg class="btn__icon" width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<button class="burger" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Otevřít menu" data-label-open="Otevřít menu" data-label-close="Zavřít menu"><span class="burger__lines" aria-hidden="true"><span></span><span></span></span></button>
+</div>
+</div>
+</header>
+
+<div class="menu" id="site-menu" aria-hidden="true">
+<div class="menu__inner">
+<nav class="menu__nav" aria-label="Menu">
+<a class="menu__link" href="../../cs/about/" style="--i:1"><span class="num">01</span><span>O nás</span></a>
+<a class="menu__link" href="../../cs/services/" style="--i:2"><span class="num">02</span><span>Služby</span></a>
+<a class="menu__link" href="../../cs/pass/" style="--i:3"><span class="num">03</span><span>Předplatné</span></a>
+<a class="menu__link is-active" href="../../cs/results/" aria-current="page" style="--i:4"><span class="num">04</span><span>Výsledky</span></a>
+<a class="menu__link" href="../../cs/insights/" style="--i:5"><span class="num">05</span><span>Zdroje</span></a>
+<a class="menu__link" href="../../cs/careers/" style="--i:6"><span class="num">06</span><span>Kariéra</span></a>
+<a class="menu__link" href="../../cs/contact/" style="--i:7"><span class="num">07</span><span>Kontakt</span></a>
+</nav><div class="menu__ext" data-menu-ext><span class="mono menu__ext-label">Na Teletype</span><a class="menu__ext-link" href="https://teletype.in/@ironvane/AboutUs" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>O týmu</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="menu__ext-link" href="https://teletype.in/@ironvane/IronvaneFAQ" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>Časté dotazy</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="menu__ext-link" href="https://teletype.in/@ironvane/Session" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>Jak fungují sezení</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="menu__ext-link" href="https://teletype.in/@ironvane/Partnership" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>Partnerství</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="menu__ext-link" href="https://teletype.in/@ironvane/IronvanePass" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>Ironvane Pass</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div><div class="menu__ext menu__ext--tight" data-menu-ext><span class="mono menu__ext-label">Na Telegramu</span><a class="menu__ext-link" href="https://t.me/+-lN8N8R_91UzYjc0" target="_blank" rel="noopener noreferrer" hreflang="ru"><span>Chat týmu</span><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+<div class="menu__foot">
+<div class="menu__contact">
+<span class="mono">Jazyk</span>
+<div class="menu__langs"><a class="menu__lang" href="../../en/results/" hreflang="en" lang="en" data-lang="en" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-gb"/></svg>EN</a>
+<a class="menu__lang" href="../../ru/results/" hreflang="ru" lang="ru" data-lang="ru" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg>RU</a>
+<a class="menu__lang" href="../../uk/results/" hreflang="uk" lang="uk" data-lang="uk" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-ua"/></svg>UK</a>
+<a class="menu__lang" href="../../es/results/" hreflang="es" lang="es" data-lang="es" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg>ES</a>
+<a class="menu__lang" href="../../cs/results/" hreflang="cs" lang="cs" data-lang="cs" aria-current="true"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-cz"/></svg>CS</a></div>
+</div>
+<div class="menu__contact">
+<span class="mono">Obecné dotazy</span>
+<a href="mailto:hello@ironvane-media.com">hello@ironvane-media.com</a>
+</div>
+</div>
+</div>
+</div>
+<div class="read-bar" data-read-bar hidden aria-labelledby="read-bar-label"><i></i><span class="visually-hidden" id="read-bar-label">Průběh čtení</span></div>
+<main id="main">
+<section class="page-hero">
+<div class="container">
+<nav class="breadcrumb" aria-label="Drobečková navigace" style="margin-bottom:24px"><a href="../../cs/">Úvod</a><span aria-hidden="true">/</span><span>Výsledky</span></nav>
+<p class="eyebrow">Výsledky</p>
+<h1 class="page-hero__title balance">Výkon, ne portfolio.</h1>
+<p class="page-hero__lead lead pretty">S většinou klientů pracujeme pod NDA, takže tato stránka ukazuje anatomii práce, ne loga. Ověřená čísla — útrata, CAC, ROAS, návratnost, kohortní křivky — sdílíme přímo na prvním hovoru.</p>
+
+</div>
+</section>
+
+<section class="section section--tight ruled">
+<div class="container">
+<div class="section-head" data-reveal>
+<p class="eyebrow">Jak vykazujeme</p>
+<h2 class="h2 balance">Pět stejných otázek, pokaždé.</h2>
+<p class="lead pretty">Případovka, která ukazuje jen výsledek, je marketing. My popisujeme úvahu, protože právě ta se přenáší na váš účet.</p>
+</div>
+<div class="tiles tiles--3"><div class="tile"><span class="tile__num">01</span><h3 class="tile__title">Zadání</h3><p class="tile__text">Obchodní omezení popsané slovy klienta, ne přebalené zadání.</p></div>
+<div class="tile"><span class="tile__num">02</span><h3 class="tile__title">Strategie</h3><p class="tile__text">Hypotéza, čtení trhu a rozhodnutí, kam rozpočet půjde a kam ne.</p></div>
+<div class="tile"><span class="tile__num">03</span><h3 class="tile__title">Realizace</h3><p class="tile__text">Co bylo postaveno a spuštěno: objem kreativy, struktura kanálů, měření, rytmus testování.</p></div>
+<div class="tile"><span class="tile__num">04</span><h3 class="tile__title">Výsledek</h3><p class="tile__text">Metriky, které se změnily, měřené proti základní linii dohodnuté před spuštěním.</p></div>
+<div class="tile"><span class="tile__num">05</span><h3 class="tile__title">Poznatky</h3><p class="tile__text">Co bychom udělali jinak — část, kterou většina agentur maže.</p></div></div>
+</div>
+</section>
+
+<section class="section section--line">
+<div class="container">
+<div class="section-head" data-reveal>
+<p class="eyebrow">Jak práce vypadá</p>
+<h2 class="h2 balance">Tvar výsledku bez samotných čísel.</h2>
+<p class="lead pretty">Klientská čísla zveřejnit nemůžeme, ale tvar křivky důvěrný není — a právě on prozradí, jestli tým ví, co dělá.</p>
+</div>
+<div class="shape-grid" data-reveal><figure class="shape-chart">
+<svg viewBox="0 0 460 214" fill="none" role="img" aria-label="Poločas rozpadu kreativy: stávající vítěz klesá po známé křivce, zatímco ověřená náhrada už stoupá.">
+<path d="M40 46 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 82 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 118 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 154 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 190 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/>
+<path d="M40 22 V190 H420" stroke="rgba(242,240,236,0.16)" stroke-width="1"/>
+<path d="M40 46 C110 48 150 66 200 112 C240 148 280 158 420 160" fill="none" stroke="#ff8f9b" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M40 46 C110 48 150 66 200 112 C240 148 280 158 420 160 L420 190 L40 190 Z" fill="rgba(255,143,155,0.08)"/>
+<path d="M190 172 C250 150 290 96 420 62" fill="none" stroke="#5fe3a1" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M190 172 C250 150 290 96 420 62 L420 190 L190 190 Z" fill="rgba(95,227,161,0.10)"/>
+<path d="M200 30 V190" stroke="rgba(242,240,236,0.24)" stroke-width="1" stroke-dasharray="4 5"/>
+<circle cx="200" cy="112" r="4.5" fill="#ff8f9b"/>
+<circle cx="190" cy="172" r="4.5" fill="#5fe3a1"/>
+<text x="40" y="208" fill="rgba(242,240,236,0.5)" font-family="ui-monospace, monospace" font-size="9" letter-spacing="1.6">KONVERZNÍ POMĚR / KUMULATIVNÍ IMPRESE</text>
+</svg>
+<figcaption class="shape-chart__cap">Poločas rozpadu kreativy: stávající vítěz klesá po známé křivce, zatímco ověřená náhrada už stoupá.</figcaption>
+</figure>
+<figure class="shape-chart">
+<svg viewBox="0 0 460 214" fill="none" role="img" aria-label="Objem proti nákladu: objem akvizice roste, náklad na výsledek klesá, obojí indexováno k výchozímu stavu.">
+<path d="M40 46 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 82 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 118 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 154 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 190 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/>
+<path d="M40 22 V190 H420" stroke="rgba(242,240,236,0.16)" stroke-width="1"/>
+<path d="M40 158 C110 150 160 128 220 104 C280 80 340 62 420 46" fill="none" stroke="#7b8cff" stroke-width="2.4" stroke-linecap="round"/>
+<path d="M40 158 C110 150 160 128 220 104 C280 80 340 62 420 46 L420 190 L40 190 Z" fill="rgba(123,140,255,0.10)"/>
+<path d="M40 62 C110 74 160 92 220 108 C280 124 340 138 420 148" fill="none" stroke="#5fe3a1" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="6 5"/>
+<circle cx="420" cy="46" r="4.5" fill="#a3b0ff"/>
+<circle cx="420" cy="148" r="4.5" fill="#5fe3a1"/>
+<text x="40" y="208" fill="rgba(242,240,236,0.5)" font-family="ui-monospace, monospace" font-size="9" letter-spacing="1.6">INDEX K VÝCHOZÍMU STAVU / MĚSÍCE</text>
+</svg>
+<figcaption class="shape-chart__cap">Objem proti nákladu: objem akvizice roste, náklad na výsledek klesá, obojí indexováno k výchozímu stavu.</figcaption>
+</figure>
+<figure class="shape-chart">
+<svg viewBox="0 0 460 214" fill="none" role="img" aria-label="Retence kohort: každá měsíční kohorta si drží víc hodnoty než ta předchozí.">
+<path d="M40 46 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 82 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 118 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 154 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/><path d="M40 190 H420" stroke="rgba(242,240,236,0.08)" stroke-width="1"/>
+<path d="M40 22 V190 H420" stroke="rgba(242,240,236,0.16)" stroke-width="1"/>
+<rect x="46" y="108" width="13" height="78" rx="2.5" fill="rgba(123,140,255,0.85)"/><rect x="61" y="132" width="13" height="54" rx="2.5" fill="rgba(123,140,255,0.55)"/><rect x="76" y="146" width="13" height="40" rx="2.5" fill="rgba(123,140,255,0.32)"/><rect x="91" y="154" width="13" height="32" rx="2.5" fill="rgba(123,140,255,0.18)"/><rect x="124" y="102" width="13" height="84" rx="2.5" fill="rgba(123,140,255,0.85)"/><rect x="139" y="124" width="13" height="62" rx="2.5" fill="rgba(123,140,255,0.55)"/><rect x="154" y="138" width="13" height="48" rx="2.5" fill="rgba(123,140,255,0.32)"/><rect x="169" y="146" width="13" height="40" rx="2.5" fill="rgba(123,140,255,0.18)"/><rect x="202" y="96" width="13" height="90" rx="2.5" fill="rgba(123,140,255,0.85)"/><rect x="217" y="116" width="13" height="70" rx="2.5" fill="rgba(123,140,255,0.55)"/><rect x="232" y="128" width="13" height="58" rx="2.5" fill="rgba(123,140,255,0.32)"/><rect x="247" y="136" width="13" height="50" rx="2.5" fill="rgba(123,140,255,0.18)"/><rect x="280" y="90" width="13" height="96" rx="2.5" fill="rgba(123,140,255,0.85)"/><rect x="295" y="106" width="13" height="80" rx="2.5" fill="rgba(123,140,255,0.55)"/><rect x="310" y="118" width="13" height="68" rx="2.5" fill="rgba(123,140,255,0.32)"/><rect x="325" y="126" width="13" height="60" rx="2.5" fill="rgba(123,140,255,0.18)"/><rect x="358" y="82" width="13" height="104" rx="2.5" fill="rgba(123,140,255,0.85)"/><rect x="373" y="96" width="13" height="90" rx="2.5" fill="rgba(123,140,255,0.55)"/><rect x="388" y="106" width="13" height="80" rx="2.5" fill="rgba(123,140,255,0.32)"/><rect x="403" y="114" width="13" height="72" rx="2.5" fill="rgba(123,140,255,0.18)"/>
+<text x="40" y="208" fill="rgba(242,240,236,0.5)" font-family="ui-monospace, monospace" font-size="9" letter-spacing="1.6">UDRŽENÁ HODNOTA / KOHORTA PODLE MĚSÍCE</text>
+</svg>
+<figcaption class="shape-chart__cap">Retence kohort: každá měsíční kohorta si drží víc hodnoty než ta předchozí.</figcaption>
+</figure></div>
+<p class="nda-note" style="margin-top:24px"><svg width="9" height="11" viewBox="0 0 9 11" fill="none" aria-hidden="true"><rect x="0.6" y="4.4" width="7.8" height="6" rx="1.4" stroke="currentColor" stroke-width="1"/><path d="M2.5 4.4V3a2 2 0 1 1 4 0v1.4" stroke="currentColor" stroke-width="1"/></svg><span>Zobrazen tvar, hodnoty pod NDA</span></p>
+</div>
+</section>
+
+<section class="section section--line">
+<div class="container">
+<div class="section-head" data-reveal>
+<p class="eyebrow">Reporting</p>
+<h2 class="h2 balance">Co vykazujeme každý měsíc.</h2>
+<p class="lead pretty">Zástupné hodnoty níže jsou záměrné. Nahradí je ověřená data klienta, jakmile spolupráce běží a zveřejnění je schváleno.</p>
+</div>
+<ol class="report-list" data-reveal><li class="report-row"><span class="report-row__num">01</span><span class="report-row__label">Spravovaná reklamní útrata</span><span class="report-row__note">Posledních 12 měsíců</span></li>
+<li class="report-row"><span class="report-row__num">02</span><span class="report-row__label">Změna blended CAC</span><span class="report-row__note">Proti stavu před startem</span></li>
+<li class="report-row"><span class="report-row__num">03</span><span class="report-row__label">ROAS / okno návratnosti</span><span class="report-row__note">Podle kohort</span></li>
+<li class="report-row"><span class="report-row__num">04</span><span class="report-row__label">Dodané varianty kreativy</span><span class="report-row__note">Za čtvrtletí</span></li>
+<li class="report-row"><span class="report-row__num">05</span><span class="report-row__label">Dokončené strukturované testy</span><span class="report-row__note">Za čtvrtletí</span></li>
+<li class="report-row"><span class="report-row__num">06</span><span class="report-row__label">Aktivní trhy</span><span class="report-row__note">Souběžně</span></li></ol>
+</div>
+</section>
+
+<section class="section section--line">
+<div class="container">
+<div class="section-head" data-reveal>
+<p class="eyebrow">Případové studie</p>
+<h2 class="h2 balance">Sedm spoluprací, anonymizovaně.</h2>
+<p class="lead pretty">Kódová označení nahrazují jména klientů. Všechno ostatní — trh, vertikála, mix kanálů, úvaha — je skutečné.</p>
+</div>
+<div class="cases cases--home"><a class="card case" href="../../cs/results/fishing-time-malaysia/" data-reveal>
+<div class="case__top"><span class="case__code">FISHING TIME</span><span class="case__tag">iGaming</span></div>
+<h3 class="case__title">Fishing Time od BGaming: 52% ROI v Malajsii</h3>
+<p class="case__summary">Trh živého rybaření v Malajsii byl připravený dřív než produkt. Crash titul Fishing Time jsme otestovali během dní a stihli škálovat včas.</p>
+<div class="metrics">
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">52,36<em class="metric__unit">%</em></span></span>
+<span class="metric__label">Návratnost</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">28,3<em class="metric__unit">k</em></span></span>
+<span class="metric__label">První vklady</span>
+</div>
+<div class="metric" data-tone="neutral">
+<span class="metric__figure"><span class="metric__value">742,9<em class="metric__unit">k</em></span></span>
+<span class="metric__label">Náklady, USD</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">389,0<em class="metric__unit">k</em></span></span>
+<span class="metric__label">Zisk, USD</span>
+</div>
+</div>
+<div class="case__meta">
+<div class="case__meta-row"><span class="case__meta-key">Region</span><span class="case__meta-val">Asie a Pacifik</span></div>
+<div class="case__meta-row"><span class="case__meta-key">Období</span><span class="case__meta-val num">2026</span></div>
+</div>
+<span class="case__cta">Číst případovku<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a>
+<a class="card case" href="../../cs/results/chicken-train-cote-divoire/" data-reveal>
+<div class="case__top"><span class="case__code">CHICKEN TRAIN</span><span class="case__tag">iGaming</span></div>
+<h3 class="case__title">Chicken Train: koncept, ze kterého vznikla hra</h3>
+<p class="case__summary">Rychlá hra na Pobřeží slonoviny, vyškálovaná na Meta při instalaci za 0,80 dolaru, na kreativním nápadu, který přežil samotnou kampaň.</p>
+<div class="metrics">
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">65<em class="metric__unit">%</em></span></span>
+<span class="metric__label">Návratnost</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">554,2<em class="metric__unit">k</em></span></span>
+<span class="metric__label">Výnos, $</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">0,80<em class="metric__unit"> USD</em></span></span>
+<span class="metric__label">Náklad na instalaci</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">40-45<em class="metric__unit">%</em></span></span>
+<span class="metric__label">Registrace na vklad</span>
+</div>
+</div>
+<div class="case__meta">
+<div class="case__meta-row"><span class="case__meta-key">Region</span><span class="case__meta-val">Afrika</span></div>
+<div class="case__meta-row"><span class="case__meta-key">Období</span><span class="case__meta-val num">2025</span></div>
+</div>
+<span class="case__cta">Číst případovku<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a>
+<a class="card case" href="../../cs/results/subscription-acquisition-plateau/" data-reveal>
+<div class="case__top"><span class="case__code">HARBOR</span><span class="case__tag">Předplatné</span></div>
+<h3 class="case__title">Přestavba akvizice předplatného po stagnaci</h3>
+<p class="case__summary">Předplatná e-commerce značka v regionu DACH, kde placený růst tři čtvrtletí stagnoval, zatímco útrata dál rostla.</p>
+<div class="metrics">
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">4,1<em class="metric__unit">×</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">ROAS</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">−31<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 1.4v7.2M2 5.6 5 8.6l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Náklad na akci</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">+46<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">LTV / návratnost</span>
+</div>
+</div>
+<div class="case__meta">
+<div class="case__meta-row"><span class="case__meta-key">Region</span><span class="case__meta-val">Západní Evropa</span></div>
+<div class="case__meta-row"><span class="case__meta-key">Období</span><span class="case__meta-val num">2024—2026</span></div>
+</div>
+<span class="case__cta">Číst případovku<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a>
+<a class="card case" href="../../cs/results/install-growth-without-breaking-payback/" data-reveal>
+<div class="case__top"><span class="case__code">VOLTA</span><span class="case__tag">Mobilní aplikace</span></div>
+<h3 class="case__title">Růst instalací bez zničení jednotkové ekonomiky</h3>
+<p class="case__summary">Utilitární aplikace ve střední Evropě a na Balkáně, která potřebovala objem, aniž by se protáhlo okno návratnosti.</p>
+<div class="metrics">
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">5,2<em class="metric__unit">×</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Objem instalací</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">−44<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 1.4v7.2M2 5.6 5 8.6l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Náklad na instalaci</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">+62<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Konverze listingu</span>
+</div>
+</div>
+<div class="case__meta">
+<div class="case__meta-row"><span class="case__meta-key">Region</span><span class="case__meta-val">Střední Evropa, Jihovýchodní Evropa</span></div>
+<div class="case__meta-row"><span class="case__meta-key">Období</span><span class="case__meta-val num">2023—2025</span></div>
+</div>
+<span class="case__cta">Číst případovku<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a>
+<a class="card case" href="../../cs/results/making-b2b-leads-defensible/" data-reveal>
+<div class="case__top"><span class="case__code">KESTREL</span><span class="case__tag">B2B SaaS</span></div>
+<h3 class="case__title">Jak udělat B2B leady obhajitelnými</h3>
+<p class="case__summary">Západoevropský B2B SaaS s rostoucím počtem leadů a obchodním týmem, který těm číslům nevěřil.</p>
+<div class="metrics">
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">+118<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Kvalifikovaný pipeline</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">−52<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 1.4v7.2M2 5.6 5 8.6l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Náklad na SQL</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">−23<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 1.4v7.2M2 5.6 5 8.6l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Obchodní cyklus</span>
+</div>
+</div>
+<div class="case__meta">
+<div class="case__meta-row"><span class="case__meta-key">Region</span><span class="case__meta-val">Západní Evropa, Severní Evropa</span></div>
+<div class="case__meta-row"><span class="case__meta-key">Období</span><span class="case__meta-val num">2025—2026</span></div>
+</div>
+<span class="case__cta">Číst případovku<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a>
+<a class="card case" href="../../cs/results/seven-markets-one-region/" data-reveal>
+<div class="case__top"><span class="case__code">ATLAS</span><span class="case__tag">Marketplace</span></div>
+<h3 class="case__title">Otevření sedmi trhů v jednom regionu</h3>
+<p class="case__summary">Marketplace expandující do Turecka a Zálivu s jedinou přeloženou sadou kampaní.</p>
+<div class="metrics">
+<div class="metric" data-tone="neutral">
+<span class="metric__figure"><span class="metric__value">5<em class="metric__unit">/7</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Ověřené trhy</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">−29<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 1.4v7.2M2 5.6 5 8.6l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Změna CAC</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">+34<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Opakované nákupy</span>
+</div>
+</div>
+<div class="case__meta">
+<div class="case__meta-row"><span class="case__meta-key">Region</span><span class="case__meta-val">Turecko a Blízký východ</span></div>
+<div class="case__meta-row"><span class="case__meta-key">Období</span><span class="case__meta-val num">2024—2026</span></div>
+</div>
+<span class="case__cta">Číst případovku<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a>
+<a class="card case" href="../../cs/results/outrunning-creative-fatigue/" data-reveal>
+<div class="case__top"><span class="case__code">NORTHLINE</span><span class="case__tag">E-commerce</span></div>
+<h3 class="case__title">Jak předběhnout únavu kreativy ve velkém objemu</h3>
+<p class="case__summary">Objemově velký e-commerce inzerent v jižní Evropě a Latinské Americe, který ztrácel výkon rychleji, než stíhal vyrábět kreativu.</p>
+<div class="metrics">
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">2,8<em class="metric__unit">×</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">ROAS</span>
+</div>
+<div class="metric" data-tone="neutral">
+<span class="metric__figure"><span class="metric__value">640</span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Dodané kreativy</span>
+</div>
+<div class="metric" data-tone="pos">
+<span class="metric__figure"><span class="metric__value">+71<em class="metric__unit">%</em></span><svg class="metric__dir" width="11" height="11" viewBox="0 0 10 10" fill="none" aria-hidden="true" focusable="false"><path d="M5 8.6V1.4M2 4.4 5 1.4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<span class="metric__label">Poločas rozpadu</span>
+</div>
+</div>
+<div class="case__meta">
+<div class="case__meta-row"><span class="case__meta-key">Region</span><span class="case__meta-val">Latinská Amerika, Jižní Evropa</span></div>
+<div class="case__meta-row"><span class="case__meta-key">Období</span><span class="case__meta-val num">2025—2026</span></div>
+</div>
+<span class="case__cta">Číst případovku<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 9L9 3M9 3H4M9 3v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a></div>
+</div>
+</section>
+
+<section class="cta-band">
+<svg class="sparkle cta-band__spark" width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M12 0c0 6.627 5.373 12 12 12-6.627 0-12 5.373-12 12 0-6.627-5.373-12-12-12C6.627 12 12 6.627 12 0Z" fill="url(#sparkleGrad)"/></svg><svg class="sparkle sparkle--sm cta-band__spark cta-band__spark--b" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M12 0c0 6.627 5.373 12 12 12-6.627 0-12 5.373-12 12 0-6.627-5.373-12-12-12C6.627 12 12 6.627 12 0Z" fill="url(#sparkleGrad)"/></svg>
+<div class="container">
+<div class="cta-band__inner" data-reveal>
+<h2 class="cta-band__title balance">Chcete verzi s čísly?</h2>
+<p class="cta-band__lead pretty">Ověřené hodnoty, reference i celý reportingový stack sdílíme pod NDA na prvním hovoru.</p>
+<div class="cta-band__actions"><a class="btn btn--primary" href="../../cs/contact/"><span>Poslat nabídku</span><svg class="btn__icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container">
+<div class="footer__top">
+<div class="footer__brand">
+<a class="logo" href="../../cs/" aria-label="Ironvane Media">
+<svg class="logo__mark" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><defs><linearGradient id="ivmMarkf" x1="4" y1="0" x2="20" y2="24" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff"/><stop offset="0.45" stop-color="#c9ccd2"/><stop offset="0.7" stop-color="#82868f"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs><path d="M12 0c0 6.627 5.373 12 12 12-6.627 0-12 5.373-12 12 0-6.627-5.373-12-12-12C6.627 12 12 6.627 12 0Z" fill="url(#ivmMarkf)"/></svg>
+<span class="logo__type"><span class="logo__name">Ironvane Media</span><span class="logo__sub">Performance systems</span></span>
+</a>
+<p class="footer__tagline">Evropská výkonnostní marketingová společnost. Kreativní strategie, nákup médií a analytika fungují jako jeden systém na 73 trzích.</p>
+</div>
+<div class="footer__col"><span class="footer__key">Společnost</span><a class="footer__link" href="../../cs/about/">O nás</a>
+<a class="footer__link" href="../../cs/pass/">Předplatné</a>
+<a class="footer__link" href="../../cs/verticals/">Vertikály</a>
+<a class="footer__link" href="../../cs/results/">Výsledky</a>
+<a class="footer__link" href="../../cs/careers/">Kariéra</a>
+<a class="footer__link" href="../../cs/contact/">Kontakt</a></div>
+<div class="footer__col"><span class="footer__key">Služby</span><a class="footer__link" href="../../cs/services/#creative-strategy">Kreativní strategie</a>
+<a class="footer__link" href="../../cs/services/#performance-marketing">Výkonnostní marketing</a>
+<a class="footer__link" href="../../cs/services/#analytics">Analytika</a>
+<a class="footer__link" href="../../cs/services/#cro">Optimalizace konverzí</a>
+<a class="footer__link" href="../../cs/services/#market-expansion">Expanze na nové trhy</a>
+<a class="footer__link" href="../../cs/services/#creative-production">Produkce kreativ</a></div>
+<div class="footer__col"><span class="footer__key">Zdroje</span><a class="footer__link" href="../../cs/insights/">Zdroje</a>
+<a class="footer__link" href="../../cs/insights/">Kreativní strategie</a>
+<a class="footer__link" href="../../cs/insights/">Analytika</a>
+<a class="footer__link" href="../../cs/insights/">Testování kreativ</a></div>
+<div class="footer__col"><span class="footer__key">Spojení</span><a class="footer__link" href="mailto:hello@ironvane-media.com">hello@ironvane-media.com</a>
+<a class="footer__link" href="mailto:careers@ironvane-media.com">careers@ironvane-media.com</a>
+<a class="footer__link" href="https://t.me/ironvane" rel="noopener noreferrer" target="_blank">Telegram</a></div>
+<div class="footer__col footer__col--langs"><span class="footer__key">Jazyk</span><div class="footer__langs"><a class="footer__lang" href="../../en/results/" hreflang="en" lang="en" data-lang="en" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-gb"/></svg>EN</a>
+<a class="footer__lang" href="../../ru/results/" hreflang="ru" lang="ru" data-lang="ru" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-ru"/></svg>RU</a>
+<a class="footer__lang" href="../../uk/results/" hreflang="uk" lang="uk" data-lang="uk" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-ua"/></svg>UK</a>
+<a class="footer__lang" href="../../es/results/" hreflang="es" lang="es" data-lang="es" aria-current="false"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-es"/></svg>ES</a>
+<a class="footer__lang" href="../../cs/results/" hreflang="cs" lang="cs" data-lang="cs" aria-current="true"><svg class="flag" viewBox="0 0 16 12" aria-hidden="true" focusable="false"><use href="#flag-cz"/></svg>CS</a></div></div><div class="footer__col" data-foot-tt><span class="footer__key">Na Teletype</span><a class="footer__link" href="https://teletype.in/@ironvane/AboutUs" target="_blank" rel="noopener noreferrer" hreflang="ru">O týmu</a><a class="footer__link" href="https://teletype.in/@ironvane/IronvaneFAQ" target="_blank" rel="noopener noreferrer" hreflang="ru">Časté dotazy</a><a class="footer__link" href="https://teletype.in/@ironvane/Session" target="_blank" rel="noopener noreferrer" hreflang="ru">Jak fungují sezení</a><a class="footer__link" href="https://teletype.in/@ironvane/Partnership" target="_blank" rel="noopener noreferrer" hreflang="ru">Partnerství</a><a class="footer__link" href="https://teletype.in/@ironvane/IronvanePass" target="_blank" rel="noopener noreferrer" hreflang="ru">Ironvane Pass</a></div><div class="footer__col" data-foot-tg><span class="footer__key">Na Telegramu</span><a class="footer__link" href="https://t.me/+-lN8N8R_91UzYjc0" target="_blank" rel="noopener noreferrer">Chat týmu</a></div>
+</div>
+<div class="footer__bottom">
+<p class="footer__legal">Všechny ochranné známky a kódová označení případových studií patří jejich vlastníkům. Identita klientů a ověřené výsledky se sdílejí pod NDA.</p>
+<div class="footer__meta">
+<span>&copy; 2026 Ironvane Media. Všechna práva vyhrazena.</span>
+<a href="../../cs/legal/">Právní informace</a>
+</div>
+</div>
+</div>
+</footer>
+<button class="to-top" type="button" data-to-top aria-label="Nahoru"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 12V2M3 6l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
+<script src="../../assets/js/main.js?v=ac0049e7" defer></script>
+</body>
+</html>

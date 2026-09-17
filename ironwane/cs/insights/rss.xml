@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zdroje — znalostní centrum výkonnostního marketingu</title>
+    <link>https://ironvane-media.com/cs/insights/</link>
+    <description>Původní texty o kreativní strategii, Meta Ads, ASO, analytice, CRO a expanzi na nové trhy od týmu Ironvane Media.</description>
+    <language>cs</language>
+    <atom:link href="https://ironvane-media.com/cs/insights/rss.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Proč dobré kreativy přestanou fungovat</title>
+      <link>https://ironvane-media.com/cs/insights/why-good-creatives-stop-working/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/cs/insights/why-good-creatives-stop-working/</guid>
+      <description>Únava kreativy se obvykle diagnostikuje pozdě a léčí se špatným lékem. Tady je, co se ve skutečnosti opotřebuje, jak to vidět o tři dny dřív a co vyměnit.</description>
+      <pubDate>Tue, 28 Jul 2026 00:00:00 +0000</pubDate>
+      <category>Kreativní strategie</category>
+    </item>
+    <item>
+      <title>Jak najít vítězné úhly před utracením rozpočtu</title>
+      <link>https://ironvane-media.com/cs/insights/finding-winning-angles/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/cs/insights/finding-winning-angles/</guid>
+      <description>Většina testování kreativy je drahé hádání. Výzkum úhlů zúží pole dřív, než se rozpočet zaváže, a zabere dny, ne čtvrtletí.</description>
+      <pubDate>Tue, 14 Jul 2026 00:00:00 +0000</pubDate>
+      <category>Kreativní strategie</category>
+    </item>
+    <item>
+      <title>Co analyzovat kromě CTR</title>
+      <link>https://ironvane-media.com/cs/insights/what-to-analyse-besides-ctr/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/cs/insights/what-to-analyse-besides-ctr/</guid>
+      <description>CTR je nejcitovanější a nejméně rozhodující metrika ve výkonnostním marketingu. Tady jsou čísla, která opravdu mění rozhodnutí.</description>
+      <pubDate>Tue, 30 Jun 2026 00:00:00 +0000</pubDate>
+      <category>Analytika</category>
+    </item>
+    <item>
+      <title>Navýšení rozpočtu není škálování</title>
+      <link>https://ironvane-media.com/cs/insights/budget-increase-is-not-scaling/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/cs/insights/budget-increase-is-not-scaling/</guid>
+      <description>Zvednout útratu na fungující kampani je nejběžnější způsob, jak ji zničit. Škálování je postup s předpoklady, velikostí kroku a pravidly zastavení.</description>
+      <pubDate>Tue, 16 Jun 2026 00:00:00 +0000</pubDate>
+      <category>Výkon</category>
+    </item>
+    <item>
+      <title>Základy ASO pro firmy nakupující instalace</title>
+      <link>https://ironvane-media.com/cs/insights/aso-fundamentals-for-install-driven/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/cs/insights/aso-fundamentals-for-install-driven/</guid>
+      <description>Placená akvizice prochází listingem v obchodě, ať už ho optimalizujete, nebo ne. Oprava listingu bývá nejlevnější dostupné zlepšení CPI.</description>
+      <pubDate>Wed, 27 May 2026 00:00:00 +0000</pubDate>
+      <category>ASO</category>
+    </item>
+    <item>
+      <title>Trvalý systém testování kreativ</title>
+      <link>https://ironvane-media.com/cs/insights/building-a-creative-testing-system/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/cs/insights/building-a-creative-testing-system/</guid>
+      <description>Občasné testovací sprinty přinesou občasné poznání. Trvalý systém buduje archiv, který se nabaluje, a náhradu připravenou dřív, než ji potřebujete.</description>
+      <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
+      <category>Testování kreativ</category>
+    </item>
+    <item>
+      <title>Jak vstoupit na nový trh bez spálení rozpočtu</title>
+      <link>https://ironvane-media.com/cs/insights/entering-a-new-market/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/cs/insights/entering-a-new-market/</guid>
+      <description>Většina neúspěšných vstupů nebyly špatné trhy. Byly to dobré trhy, na které se vstoupilo přeloženou kampaní, bez místní ekonomiky a bez kritérií odchodu.</description>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 +0000</pubDate>
+      <category>Expanze</category>
+    </item>
+    <item>
+      <title>Landing pages, které drží slib reklamy</title>
+      <link>https://ironvane-media.com/cs/insights/landing-pages-that-keep-the-promise/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/cs/insights/landing-pages-that-keep-the-promise/</guid>
+      <description>Velká část toho, co se svádí na cenu médií, je ve skutečnosti soulad sdělení. Opravou bývá stránka, ne nabídka.</description>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 +0000</pubDate>
+      <category>CRO</category>
+    </item>
+    <item>
+      <title>Kolik kreativy účet doopravdy potřebuje</title>
+      <link>https://ironvane-media.com/cs/insights/how-much-creative-does-an-account-need/</link>
+      <guid isPermaLink="true">https://ironvane-media.com/cs/insights/how-much-creative-does-an-account-need/</guid>
+      <description>Objemové cíle opsané z cizích případovek nic neznamenají. Správné číslo vypadne z vaší vlastní křivky únavy a struktury testování.</description>
+      <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Testování kreativ</category>
+    </item>
+  </channel>
+</rss>

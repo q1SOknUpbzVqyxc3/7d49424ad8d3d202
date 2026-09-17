@@ -1,0 +1,39 @@
+{
+  // Cloudflare Workers, not Pages. The dashboard's "Create app" flow builds a
+  // Worker now -- Pages is on its way out -- so the site is deployed as static
+  // assets with a small Worker in front for the one dynamic route.
+  "name": "ironvane-media",
+  "main": "./worker.js",
+  "compatibility_date": "2026-08-23",
+
+  "assets": {
+    // The site is served straight from the repository root; there is no build
+    // step and never was.
+    "directory": "./",
+    "binding": "ASSETS",
+
+    // A multi-page site, so a missing path must serve 404.html. The
+    // "single-page-application" value would answer every unknown URL with the
+    // root index.html, which on this site is the language redirect -- every
+    // typo would silently bounce the visitor to the homepage instead of
+    // telling them the page does not exist.
+    "not_found_handling": "404-page",
+
+    // Every request runs the Worker first. This used to be ["/api/*"], on the
+    // grounds that routing 160 static pages through a script that only passes
+    // them on is slower and costlier. Two things overruled that:
+    //
+    //   - http:// has to redirect to https://. Only code can redirect on
+    //     scheme; _headers cannot, and a workers.dev subdomain has no zone and
+    //     so no "Always Use HTTPS" switch. A visitor typing http:// was
+    //     reaching the contact form and posting personal data in cleartext.
+    //   - Cloudflare does not apply _headers to responses the Worker returns,
+    //     so a half-and-half arrangement would have left the security headers
+    //     on some responses and not others, silently.
+    //
+    // The Worker therefore owns every response header (see harden() in
+    // worker.js) and the assets still come from Cloudflare's own storage
+    // through the ASSETS binding.
+    "run_worker_first": true
+  }
+}

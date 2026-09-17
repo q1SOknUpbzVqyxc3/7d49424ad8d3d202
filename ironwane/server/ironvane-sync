@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# Pull the site from GitHub and publish it. Runs on a timer; the owner's
+# computer is not involved, which is the whole point of this file.
+#
+# Exclusions come from the repository's own .assetsignore -- the same list
+# tools/deploy.sh uses -- so "what must never be public" has one home and cannot
+# drift between the two ways of deploying.
+set -euo pipefail
+
+REPO=/opt/ironvane-media
+DEST=/var/www/ironvane-media
+BRANCH=main
+
+exec >>/var/log/ironvane-sync.log 2>&1
+echo "--- $(date -Is)"
+
+cd "$REPO"
+if ! git fetch --quiet origin "$BRANCH" 2>&1; then
+  echo "ОШИБКА: не удалось связаться с GitHub"
+  exit 1
+fi
+
+have=$(git rev-parse HEAD)
+want=$(git rev-parse "origin/$BRANCH")
+if [ "$have" = "$want" ]; then
+  echo "нет изменений (${have:0:8})"
+  exit 0
+fi
+echo "обновление ${have:0:8} -> ${want:0:8}"
+git reset --hard --quiet "origin/$BRANCH"
+
+EX=()
+while IFS= read -r line; do
+  line="${line%%#*}"
+  line="$(echo "$line" | tr -d '[:space:]')"
+  [ -z "$line" ] && continue
+  case "$line" in */\*\*) continue ;; esac
+  EX+=( "--exclude=/$line" )
+done < .assetsignore
+EX+=( "--exclude=/.git" "--exclude=/.gitignore" )
+
+# Built beside the live directory and swapped in, so a failure part way through
+# can never leave visitors looking at half a site.
+rm -rf "${DEST}.new"
+mkdir -p "${DEST}.new"
+rsync -a "${EX[@]}" ./ "${DEST}.new/"
+chown -R www-data:www-data "${DEST}.new"
+find "${DEST}.new" -type d -exec chmod 755 {} +
+find "${DEST}.new" -type f -exec chmod 644 {} +
+rm -rf "${DEST}.old"
+[ -d "$DEST" ] && mv "$DEST" "${DEST}.old"
+mv "${DEST}.new" "$DEST"
+rm -rf "${DEST}.old"
+echo "выложено: $(find "$DEST" -type f | wc -l) файлов"
+
+for p in /ru/ /en/ /es/ /cs/ /uk/; do
+  code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 \
+         --resolve ironvane-media.com:443:127.0.0.1 "https://ironvane-media.com$p" || echo "---")
+  echo "  $p -> $code"
+done
