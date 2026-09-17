@@ -4,10 +4,12 @@ import { notFoundRoute, routes } from './config/routes'
 import { siteConfig } from './config/site'
 import { useLocale } from './hooks/useLocale'
 import { getRouteLocale, readPersistedLocale, resolveSiteLocale } from './utils/locale'
+import { localizeLegacyContent } from './utils/localizeLegacyContent'
 import './styles/main.css'
 import './styles/documents.css'
 
 const pageModules = import.meta.glob('./pages/*.jsx')
+const contentModules = import.meta.glob('./content/pages/*.json')
 
 function currentRoute() {
   const path = window.location.pathname
@@ -22,6 +24,7 @@ export default function App() {
   const definition = routes[route] ?? notFoundRoute(routeLocale || 'en')
   const { locale, selectLocale } = useLocale(definition.route)
   const [Page, setPage] = useState(null)
+  const [content, setContent] = useState(null)
 
   useEffect(() => {
     if (route === '/') {
@@ -30,23 +33,29 @@ export default function App() {
       return
     }
     let active = true
-    pageModules[`./pages/${definition.component}`]().then((module) => {
-      if (active) setPage(() => module.default)
+    Promise.all([
+      pageModules[`./pages/${definition.component}`](),
+      definition.content ? contentModules[`./content/pages/${definition.content}`]() : Promise.resolve({ default: null })
+    ]).then(([pageModule, contentModule]) => {
+      if (active) {
+        setPage(() => pageModule.default)
+        setContent(contentModule.default)
+      }
     })
     return () => { active = false }
-  }, [definition.component, route])
+  }, [definition.component, definition.content, route])
 
   useEffect(() => {
     if (!Page || definition.component !== 'HomePage.jsx') return
-    void import('./legacy/site.js')
-  }, [Page, definition.component])
+    void import('./legacy/site.js').then(() => localizeLegacyContent(definition.locale))
+  }, [Page, definition.component, definition.locale])
 
-  if (route === '/' || !Page) return null
+  if (route === '/' || !Page || (definition.content && !content)) return null
 
   return (
     <>
       <Seo locale={definition.locale} contentLocale={definition.contentLocale} seo={definition.seo} />
-      <Page locale={locale} selectLocale={selectLocale} />
+      <Page locale={locale} page={content} selectLocale={selectLocale} />
     </>
   )
 }
