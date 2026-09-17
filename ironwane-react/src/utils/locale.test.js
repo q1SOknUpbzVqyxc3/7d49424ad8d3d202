@@ -2,29 +2,59 @@ import assert from 'node:assert/strict'
 import { existsSync } from 'node:fs'
 import test from 'node:test'
 import { documents } from '../config/documents.js'
-import { detectSupportedLocale, getLocalizedDocumentUrl } from './locale.js'
+import {
+  detectSupportedLocale,
+  getLocalizedDocumentUrl,
+  localizeRoute,
+  normalizeLocale,
+  readPersistedLocale,
+  resolveDocumentLocale,
+  resolveSiteLocale,
+  SITE_LOCALES
+} from './locale.js'
 
-const supported = ['en', 'ru', 'uk']
-const document = { files: { en: '/en.pdf', ru: '/ru.pdf', uk: '/uk.pdf' } }
+const document = { files: { en: '/en.pdf', ru: '/ru.pdf', uk: '/uk.pdf', es: '/es.pdf', cs: '/cs.pdf' } }
+const matrix = [
+  ['en', 'en'], ['en-US', 'en'], ['en-GB', 'en'],
+  ['ru', 'ru'], ['ru-RU', 'ru'], ['uk', 'uk'], ['uk-UA', 'uk'],
+  ['es', 'es'], ['es-ES', 'es'], ['es-MX', 'es'], ['cs', 'cs'], ['cs-CZ', 'cs'],
+  ['de-DE', 'en'], ['fr-FR', 'en'], ['pl-PL', 'en'], ['zh-CN', 'en'], ['ja-JP', 'en'],
+  ['unknown', 'en'], ['', 'en'], [null, 'en']
+]
 
-test('detects English regional locales', () => {
-  assert.equal(detectSupportedLocale(supported, ['en-US']), 'en')
-  assert.equal(detectSupportedLocale(supported, ['en-GB']), 'en')
+test('normalizes and resolves the browser locale matrix', () => {
+  for (const [input, expected] of matrix) assert.equal(detectSupportedLocale(SITE_LOCALES, [input]), expected, String(input))
+  assert.equal(normalizeLocale('ua-UA'), 'uk')
+  assert.equal(detectSupportedLocale(SITE_LOCALES, ['de-DE', 'ru-RU', 'en-US']), 'ru')
 })
 
-test('detects Russian and Ukrainian aliases', () => {
-  assert.equal(detectSupportedLocale(supported, ['ru-RU']), 'ru')
-  assert.equal(detectSupportedLocale(supported, ['ua-UA']), 'uk')
+test('persisted locale has priority over browser locale', () => {
+  assert.equal(resolveSiteLocale({ persistedLocale: 'en', languages: ['ru-RU'] }), 'en')
+  const storage = { getItem: () => 'es-MX' }
+  assert.equal(readPersistedLocale('site-lang', storage), 'es')
 })
 
-test('falls back to English', () => {
-  assert.equal(detectSupportedLocale(supported, ['ja-JP']), 'en')
-  assert.equal(detectSupportedLocale(supported, []), 'en')
-  assert.equal(getLocalizedDocumentUrl(document, ['xx']), '/en.pdf')
+test('site locale has priority for documents and English is the fallback', () => {
+  assert.equal(resolveDocumentLocale(document, { siteLocale: 'en', persistedLocale: 'ru', languages: ['uk-UA'] }), 'en')
+  assert.equal(resolveDocumentLocale(document, { persistedLocale: 'ru', languages: ['uk-UA'] }), 'ru')
+  assert.equal(resolveDocumentLocale(document, { languages: ['de-DE', 'es-MX'] }), 'es')
+  assert.equal(resolveDocumentLocale(document, { siteLocale: 'de', languages: ['ru-RU'] }), 'en')
+  assert.equal(getLocalizedDocumentUrl(document, { languages: ['xx'] }), '/en.pdf')
+  assert.equal(getLocalizedDocumentUrl({ files: { en: '/en.pdf' } }, { siteLocale: 'ru' }), '/en.pdf')
 })
 
-test('all configured document files exist', () => {
+test('localizes the equivalent route', () => {
+  assert.equal(localizeRoute('/ru/privacy/', 'en'), '/en/privacy/')
+  assert.equal(localizeRoute('/', 'cs'), '/cs/')
+})
+
+test('all configured document files and English fallbacks exist', () => {
   for (const item of documents) {
-    for (const file of Object.values(item.files)) assert.equal(existsSync(`public${file}`), true, file)
+    assert.ok(item.files.en, item.id)
+    for (const [locale, file] of Object.entries(item.files)) {
+      assert.equal(existsSync(`public${file}`), true, file)
+      assert.equal(getLocalizedDocumentUrl(item, { siteLocale: locale }), file)
+    }
+    assert.equal(getLocalizedDocumentUrl(item, { siteLocale: 'cs' }), item.files.en)
   }
 })

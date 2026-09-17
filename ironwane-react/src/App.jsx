@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react'
 import routeIndex from './content/route-index.json'
-import { Seo } from './components/Seo'
-import { SiteFooter } from './components/SiteFooter'
-import { StaticMarkup } from './components/StaticMarkup'
-import { getLeadEndpoint } from './config/runtime'
-import { detectSupportedLocale } from './utils/locale'
+import { getLeadEndpoint } from './services/apiClient'
+import { siteConfig } from './config/site'
+import { useLocale } from './hooks/useLocale'
+import { RoutePage } from './pages/RoutePage'
+import { getRouteLocale, readPersistedLocale, resolveSiteLocale, SITE_LOCALES } from './utils/locale'
 import './styles/main.css'
 import './styles/documents.css'
 
 const pageModules = import.meta.glob('./content/pages/*.json')
-const siteLocales = ['en', 'ru', 'uk', 'es', 'cs']
-
 function currentRoute() {
   const path = window.location.pathname
   if (path === '/404.html') return '/404'
@@ -21,10 +19,16 @@ function currentRoute() {
 export default function App() {
   const [page, setPage] = useState(null)
   const route = currentRoute()
+  const routeLocale = getRouteLocale(route)
+  useLocale(route, page?.route ?? '')
 
   useEffect(() => {
     if (route === '/') {
-      window.location.replace(`/${detectSupportedLocale(siteLocales)}/`)
+      const locale = resolveSiteLocale({
+        supportedLocales: SITE_LOCALES,
+        persistedLocale: readPersistedLocale(siteConfig.localeStorageKey)
+      })
+      window.location.replace(`/${locale}/`)
       return
     }
     const filename = routeIndex[route] ?? routeIndex['/404']
@@ -51,14 +55,6 @@ export default function App() {
   if (!page) return null
 
   return (
-    <>
-      <Seo locale={page.locale} seo={page.seo} />
-      <StaticMarkup html={page.pre} />
-      <StaticMarkup html={page.header} />
-      <StaticMarkup html={page.between} />
-      <main id="main"><StaticMarkup html={page.main} /></main>
-      <SiteFooter html={page.footer} pageLocale={page.locale} />
-      <StaticMarkup html={page.post} />
-    </>
+    <RoutePage page={page} locale={routeLocale || page.locale} />
   )
 }
