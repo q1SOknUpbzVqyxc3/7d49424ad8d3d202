@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="g"><stop stop-color="#17452b"/><stop offset="1" stop-color="#050807"/></radialGradient>
+    <linearGradient id="c" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#ffffff"/><stop offset=".45" stop-color="#9aa8a2"/><stop offset=".7" stop-color="#ffffff"/><stop offset="1" stop-color="#46534d"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <circle cx="600" cy="315" r="220" fill="none" stroke="#14e85c" stroke-opacity=".22" stroke-width="2"/>
+  <circle cx="600" cy="315" r="170" fill="none" stroke="#14e85c" stroke-opacity=".3" stroke-dasharray="5 18" stroke-width="3"/>
+  <text x="600" y="310" fill="url(#c)" font-family="Arial,sans-serif" font-size="150" font-style="italic" font-weight="900" text-anchor="middle">AMIX</text>
+  <text x="600" y="405" fill="#14e85c" font-family="Arial,sans-serif" font-size="78" font-style="italic" font-weight="900" letter-spacing="12" text-anchor="middle">TEAM</text>
+</svg>

@@ -30,12 +30,15 @@ pip install -r requirements.txt
 uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
-Configure the backend from `backend/.env.example` through process environment variables. `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are required. Lead archives default to `/var/lib/ironvane/leads.jsonl` and must be writable by the service account.
+Configure the backend from `backend/.env.example` through process environment variables. Lead archives default to `/var/lib/ironvane/leads.jsonl` and must be writable by the service account. If Telegram is unavailable but archival succeeds, the API accepts the lead with HTTP 202 instead of losing it. Run backend tests with `python -m unittest discover -s tests -v` from `backend/`.
 
 ## Structure
 
 - `src/components` contains shared shell, SEO, and document components.
 - `src/config` contains runtime and document configuration.
+- `src/hooks` contains persisted locale behavior.
+- `src/pages` contains the shared route page.
+- `src/services` contains the API endpoint configuration.
 - `src/content/pages` contains route-level multilingual content chunks.
 - `src/styles` contains the preserved visual system.
 - `src/utils` contains locale selection.
@@ -45,8 +48,10 @@ Configure the backend from `backend/.env.example` through process environment va
 
 ## Documents and locale fallback
 
-Footer document links inspect `navigator.languages` and `navigator.language` independently from the displayed site language. Supported locales open the matching PDF. Unknown, empty, or unavailable locales open English. Ukrainian documents use `uk`.
+The root route resolves the persisted `ivm-lang` choice first, then browser locales, with English as fallback. Manual language links preserve the equivalent current route and persist the choice. Footer PDFs use the current site locale first, then the persisted locale, browser locales, and finally English. Ukrainian documents use `uk`.
 
 ## Production routing
 
 Serve `dist/` as static files and proxy `/api/lead` to FastAPI. Route HTML files are generated during `npm run build`, so direct requests such as `/en/about/` do not require an SPA fallback.
+
+`npm run check` validates all 161 routes, localized and internal links, hreflang targets, sitemap coverage, required public assets, legal files, lint, and the production build.
