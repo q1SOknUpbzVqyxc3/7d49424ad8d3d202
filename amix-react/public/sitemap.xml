@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://amix-team.digital/en/</loc></url>
   <url><loc>https://amix-team.digital/ru/</loc></url>
+  <url><loc>https://amix-team.digital/uk/</loc></url>
+  <url><loc>https://amix-team.digital/es/</loc></url>
+  <url><loc>https://amix-team.digital/cs/</loc></url>
 </urlset>

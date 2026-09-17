@@ -28,4 +28,4 @@ npm ci --prefix ironwane-react
 npm run build --prefix ironwane-react
 ```
 
-Both projects use the same locale priority, legal-document fallback, backend layout, `/api/lead` contract, `/health` endpoint, Vite proxy, security-header format, and validation command. AMIX retains its original Russian content and visual design; untranslated locale routes use the Russian content fallback without claiming translated SEO coverage.
+Both projects use the same locale priority, persisted language selection, localized routing, legal-document fallback, backend layout, `/api/lead` contract, `/health` endpoint, Vite proxy, security-header format, and validation command. AMIX now provides complete page and form localization for `en`, `ru`, `uk`, `es`, and `cs` while retaining its original visual design.

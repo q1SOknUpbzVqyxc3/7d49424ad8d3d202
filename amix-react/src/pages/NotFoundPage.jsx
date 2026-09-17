@@ -1,4 +1,3 @@
-import page from '../content/page.json'
 import { LanguageSwitcher } from '../components/LanguageSwitcher'
 import { SiteFooter } from '../components/SiteFooter'
 import { StaticMarkup } from '../components/StaticMarkup'
@@ -11,7 +10,7 @@ const messages = {
   cs: ['Stránka nebyla nalezena', 'Zpět na hlavní stránku']
 }
 
-export default function NotFoundPage({ locale, selectLocale }) {
+export default function NotFoundPage({ locale, page, selectLocale }) {
   const [heading, action] = messages[locale] ?? messages.en
   const header = `<header class="nav" id="nav"><div class="wrap nav__in"><a class="nav__logo" href="/${locale}/"><span class="chrome" data-text="AMIX">AMIX</span></a></div></header>`
   return (
