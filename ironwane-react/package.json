@@ -8,7 +8,7 @@
     "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
-    "test": "node --test src/utils/locale.test.js",
+    "test": "node --test src/utils/locale.test.js && node scripts/validate-content.mjs",
     "check": "npm run lint && npm test && npm run build"
   },
   "dependencies": {
