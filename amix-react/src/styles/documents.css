@@ -1,0 +1,1 @@
+html{overflow-x:hidden}.footer__documents{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}.footer__docs{display:flex;flex-wrap:wrap;gap:10px 22px}.footer__docs a{color:var(--muted);font-size:13px;transition:color .2s ease}.footer__docs a:hover,.footer__docs a:focus-visible{color:var(--green)}
